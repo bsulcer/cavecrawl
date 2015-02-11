@@ -1,3 +1,7 @@
 body {
   background: black;
 }
+
+#display {
+  border: solid 1px #555;
+}
