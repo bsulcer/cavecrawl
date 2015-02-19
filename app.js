@@ -43,7 +43,8 @@ World.prototype.setCell = function(x, y, value) {
 
 World.prototype.startUpdate = function() {
   if (this._newCellBuffer === null) {
-    this._newCellBuffer = new ArrayBuffer(this._numCells * 8);
+    this._newCellBuffer = new
+     ArrayBuffer(this._numCells * 8);
   }
   this._writeCells = new Uint8Array(this._newCellBuffer);
 };
@@ -105,7 +106,7 @@ function smoothWalls(world, r1Threshold, r2Threshold) {
             if (nx < 0 || nx >= world._width || ny < 0 || ny >= world._height) {
               continue;
             }
-            if (world.getCell(x + xo, y + yo) === 1) ++r2;
+            if (world.getCell(nx, ny) === 1) ++r2;
           }
         }
         if (r1 >= r1Threshold || r2 <= r2Threshold) {
@@ -134,7 +135,7 @@ function generateWorld(width, height) {
   for (i = 0; i < 4; ++i) smoothWalls(world, 5, 2);
   clearRect(world, Math.floor(width / 2) - 3, Math.floor(height / 2) - 3,
     6, 6);
-  for (i = 0; i < 1; ++i) smoothWalls(world, 5, -1);
+  for (i = 0; i < 1; ++i) smoothWalls(world, 5, 2);
   return world;
 }
 
